@@ -1,5 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import { House } from "lucide-react";
+<House size={40} />
 
 export default function Dashboard() {
     return (
