@@ -1,28 +1,34 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-import { House } from "lucide-react";
-<House size={40} />
+import AdminLayout from "@/Layouts/AdminLayout";
+import StatCard from "@/Components/Dashboard/StatCard";
+import EmptyState from "@/Components/UI/EmptyState";
+
+import {
+    Newspaper,
+    Image,
+    FileText,
+    Users,
+} from "lucide-react";
 
 export default function Dashboard() {
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Dashboard
-                </h2>
-            }
-        >
-            <Head title="Dashboard" />
+        <AdminLayout>
+            <h1 className="mb-6 text-3xl font-bold">
+                Dashboard
+            </h1>
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're logged in!
-                        </div>
-                    </div>
-                </div>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                <StatCard title="Berita" value="0" icon={Newspaper} />
+                <StatCard title="Galeri" value="0" icon={Image} />
+                <StatCard title="Dokumen" value="0" icon={FileText} />
+                <StatCard title="Pengunjung" value="0" icon={Users} />
             </div>
-        </AuthenticatedLayout>
+
+            <div className="mt-8">
+                <EmptyState
+                    title="Belum ada aktivitas"
+                    description="Aktivitas terbaru akan muncul di sini."
+                />
+            </div>
+        </AdminLayout>
     );
 }
