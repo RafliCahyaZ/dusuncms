@@ -17,12 +17,39 @@ class NewsController extends Controller
             'news' => News::latest()->get(),
         ]);
     }
+    public function edit(News $news)
+    {
+        return Inertia::render('Admin/News/Edit', [
+            'news' => $news,
+        ]);
+    }
 
     public function create()
     {
         return Inertia::render('Admin/News/Create');
     }
 
+    public function update(Request $request, News $news)
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'max:255'],
+            'excerpt' => ['nullable'],
+            'content' => ['required'],
+            'status' => ['required'],
+        ]);
+
+        $news->update([
+            'title' => $validated['title'],
+            'slug' => Str::slug($validated['title']),
+            'excerpt' => $validated['excerpt'],
+            'content' => $validated['content'],
+            'status' => $validated['status'],
+        ]);
+
+        return redirect()
+            ->route('news.index')
+            ->with('success', 'Berita berhasil diperbarui.');
+    }
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -43,5 +70,14 @@ class NewsController extends Controller
 
         return redirect()->route('news.index')
             ->with('success', 'Berita berhasil ditambahkan.');
+    }
+
+    public function destroy(News $news)
+    {
+        $news->delete();
+
+        return redirect()
+            ->route('news.index')
+            ->with('success', 'Berita berhasil dihapus.');
     }
 }
