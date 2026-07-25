@@ -1,6 +1,7 @@
 import { Link } from "@inertiajs/react";
 import { Menu } from "lucide-react";
 
+import Button from "@/Components/UI/Button";
 import { navigation } from "@/data/navigation";
 import { APP } from "@/constants/config";
 
@@ -8,7 +9,6 @@ export default function Navbar() {
     return (
         <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 font-bold text-white">
