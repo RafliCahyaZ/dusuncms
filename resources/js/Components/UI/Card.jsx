@@ -1,11 +1,6 @@
-export default function Card({
-    children,
-    className = "",
-}) {
+export default function Card({ children, className = "" }) {
     return (
-        <div
-            className={`rounded-xl bg-white shadow-sm border border-slate-200 ${className}`}
-        >
+        <div className={`rounded-xl border border-slate-200 bg-white shadow-sm ${className}`}>
             {children}
         </div>
     );

@@ -9,13 +9,8 @@ export default function StatCard({
         <Card className="p-5">
             <div className="flex items-center justify-between">
                 <div>
-                    <p className="text-sm text-slate-500">
-                        {title}
-                    </p>
-
-                    <h2 className="mt-2 text-3xl font-bold">
-                        {value}
-                    </h2>
+                    <p className="text-sm text-slate-500">{title}</p>
+                    <h2 className="mt-2 text-3xl font-bold text-slate-900">{value}</h2>
                 </div>
 
                 {Icon && (

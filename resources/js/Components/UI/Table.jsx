@@ -1,7 +1,4 @@
-export default function Table({
-    headers = [],
-    children,
-}) {
+export default function Table({ headers = [], children }) {
     return (
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
             <table className="min-w-full">
@@ -17,10 +14,7 @@ export default function Table({
                         ))}
                     </tr>
                 </thead>
-
-                <tbody>
-                    {children}
-                </tbody>
+                <tbody>{children}</tbody>
             </table>
         </div>
     );

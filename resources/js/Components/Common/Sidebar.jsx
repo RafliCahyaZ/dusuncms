@@ -2,27 +2,27 @@ import { Link } from "@inertiajs/react";
 import {
     LayoutDashboard,
     Newspaper,
-    Image,
     FileText,
     Settings,
+    LogOut,
 } from "lucide-react";
 
 const menus = [
-    { title: "Dashboard", href: "/", icon: LayoutDashboard },
-    { title: "Berita", href: "#", icon: Newspaper },
-    { title: "Galeri", href: "#", icon: Image },
+    { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { title: "Berita", href: "/news", icon: Newspaper },
     { title: "Dokumen", href: "#", icon: FileText },
     { title: "Pengaturan", href: "#", icon: Settings },
 ];
 
 export default function Sidebar() {
     return (
-        <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-900 text-white">
-            <div className="border-b border-slate-700 p-6">
-                <h1 className="text-xl font-bold">DusunCMS</h1>
+        <aside className="fixed left-0 top-0 h-screen w-64 border-r border-slate-200 bg-slate-950 text-white">
+            <div className="border-b border-slate-800 px-6 py-5">
+                <h1 className="text-xl font-bold tracking-wide">DusunCMS</h1>
+                <p className="mt-1 text-xs text-slate-400">Admin Panel</p>
             </div>
 
-            <nav className="mt-4">
+            <nav className="mt-4 space-y-1 px-3">
                 {menus.map((menu) => {
                     const Icon = menu.icon;
 
@@ -30,7 +30,7 @@ export default function Sidebar() {
                         <Link
                             key={menu.title}
                             href={menu.href}
-                            className="flex items-center gap-3 px-6 py-3 hover:bg-slate-800"
+                            className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-white"
                         >
                             <Icon size={18} />
                             {menu.title}
@@ -38,6 +38,18 @@ export default function Sidebar() {
                     );
                 })}
             </nav>
+
+            <div className="absolute bottom-0 left-0 w-full border-t border-slate-800 p-3">
+                <Link
+                    href="/logout"
+                    method="post"
+                    as="button"
+                    className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-white"
+                >
+                    <LogOut size={18} />
+                    Logout
+                </Link>
+            </div>
         </aside>
     );
 }
