@@ -1,37 +1,38 @@
 import { Head, useForm } from "@inertiajs/react";
 import Form from "./Partials/Form";
 
-export default function Create() {
+export default function Edit({ news }) {
     const {
         data,
         setData,
-        post,
+        put,
         processing,
         errors,
     } = useForm({
-        title: "",
-        excerpt: "",
-        content: "",
-        status: "draft",
+        title: news.title ?? "",
+        excerpt: news.excerpt ?? "",
+        content: news.content ?? "",
+        status: news.status ?? "draft",
     });
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("news.store"));
+
+        put(route("news.update", news.id));
     };
 
     return (
         <>
-            <Head title="Tambah Berita" />
+            <Head title="Edit Berita" />
 
             <div className="mx-auto max-w-5xl p-6">
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold">
-                        Tambah Berita
+                        Edit Berita
                     </h1>
 
                     <p className="mt-2 text-slate-600">
-                        Tambahkan berita baru untuk website dusun.
+                        Perbarui informasi berita.
                     </p>
                 </div>
 
@@ -41,7 +42,7 @@ export default function Create() {
                     errors={errors}
                     processing={processing}
                     submit={submit}
-                    submitLabel="Simpan Berita"
+                    submitLabel="Perbarui Berita"
                 />
             </div>
         </>
