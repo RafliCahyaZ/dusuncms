@@ -1,22 +1,26 @@
 export const navigation = [
     {
         name: "Home",
-        href: "#",
+        href: "/",
     },
     {
         name: "Profil",
-        href: "#about",
+        href: "/#about",
+    },
+    {
+        name: "Perangkat Dusun",
+        href: "/perangkat-dusun",
     },
     {
         name: "Berita",
-        href: "#news",
+        href: "/berita",
     },
     {
         name: "Galeri",
-        href: "#gallery",
+        href: "/galeri",
     },
     {
         name: "Kontak",
-        href: "#contact",
+        href: "/#contact",
     },
 ];

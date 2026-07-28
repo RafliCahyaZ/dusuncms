@@ -8,10 +8,12 @@ import ServicesSection from "@/Components/Public/ServicesSection";
 import NewsSection from "@/Components/Public/NewsSection";
 import GallerySection from "@/Components/Public/GallerySection";
 import ContactSection from "@/Components/Public/ContactSection";
+import VillageOfficialsSection from "@/Components/Public/VillageOfficialsSection";
 
 export default function Home({
     news,
     galleries,
+    officials
 }) {
     return (
         <PublicLayout>
@@ -21,6 +23,10 @@ export default function Home({
                 <Hero />
 
                 <AboutSection />
+
+                <VillageOfficialsSection
+                    officials={officials}
+                />
 
                 <ServicesSection />
 

@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\VillageOfficialController;
+use App\Http\Controllers\PublicVillageOfficialController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\PublicGalleryController;
@@ -42,6 +44,15 @@ Route::get('/galeri', [PublicGalleryController::class, 'index'])
 
 Route::get('/galeri/{gallery}', [PublicGalleryController::class, 'show'])
     ->name('public.gallery.show');
+
+    /*
+|--------------------------------------------------------------------------
+| Public Village Officials
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/perangkat-dusun', [PublicVillageOfficialController::class, 'index'])
+    ->name('public.village-officials.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +102,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     */
 
     Route::resource('gallery', GalleryController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Village Officials
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('village-officials', VillageOfficialController::class);
 
     /*
     |--------------------------------------------------------------------------

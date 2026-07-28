@@ -1,4 +1,12 @@
 import { usePage } from "@inertiajs/react";
+import {
+    Facebook,
+    Instagram,
+    Youtube,
+    MapPin,
+    Phone,
+    Mail,
+} from "lucide-react";
 
 export default function Footer() {
     const { setting } = usePage().props;
@@ -7,17 +15,38 @@ export default function Footer() {
 
     return (
         <footer className="border-t border-slate-200 bg-white">
-            <div className="mx-auto grid max-w-7xl gap-10 px-6 py-10 md:grid-cols-3">
+            <div className="mx-auto grid max-w-7xl gap-10 px-6 py-10 lg:grid-cols-3">
 
                 {/* Website */}
                 <div>
-                    <h3 className="text-lg font-bold text-slate-900">
-                        {villageName}
-                    </h3>
+                    <div className="flex items-center gap-3">
+                        {setting?.logo_url ? (
+                            <img
+                                src={setting.logo_url}
+                                alt={villageName}
+                                className="h-12 w-12 rounded-xl object-cover"
+                            />
+                        ) : (
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 font-bold text-white">
+                                {villageName.charAt(0).toUpperCase()}
+                            </div>
+                        )}
 
-                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                        Website resmi dusun yang menyediakan informasi,
-                        berita, galeri, serta layanan informasi masyarakat.
+                        <div>
+                            <h3 className="text-lg font-bold text-slate-900">
+                                {villageName}
+                            </h3>
+
+                            <p className="text-sm text-slate-500">
+                                Website Resmi Dusun
+                            </p>
+                        </div>
+                    </div>
+
+                    <p className="mt-5 text-sm leading-7 text-slate-600">
+                        Website resmi dusun sebagai media informasi,
+                        publikasi kegiatan, pelayanan masyarakat,
+                        dan transparansi pemerintahan desa.
                     </p>
                 </div>
 
@@ -27,18 +56,41 @@ export default function Footer() {
                         Kontak
                     </h3>
 
-                    <div className="mt-3 space-y-2 text-sm text-slate-600">
+                    <div className="mt-5 space-y-4 text-sm text-slate-600">
+
                         {setting?.address && (
-                            <p>{setting.address}</p>
+                            <div className="flex items-start gap-3">
+                                <MapPin
+                                    size={18}
+                                    className="mt-0.5 text-emerald-600"
+                                />
+
+                                <span>{setting.address}</span>
+                            </div>
                         )}
 
                         {setting?.phone && (
-                            <p>📞 {setting.phone}</p>
+                            <div className="flex items-center gap-3">
+                                <Phone
+                                    size={18}
+                                    className="text-emerald-600"
+                                />
+
+                                <span>{setting.phone}</span>
+                            </div>
                         )}
 
                         {setting?.email && (
-                            <p>✉️ {setting.email}</p>
+                            <div className="flex items-center gap-3">
+                                <Mail
+                                    size={18}
+                                    className="text-emerald-600"
+                                />
+
+                                <span>{setting.email}</span>
+                            </div>
                         )}
+
                     </div>
                 </div>
 
@@ -48,16 +100,18 @@ export default function Footer() {
                         Media Sosial
                     </h3>
 
-                    <div className="mt-3 flex flex-col gap-2 text-sm">
+                    <div className="mt-5 flex flex-col gap-4">
 
                         {setting?.facebook && (
                             <a
                                 href={setting.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-slate-600 hover:text-emerald-600"
+                                className="flex items-center gap-3 text-slate-600 transition hover:text-emerald-600"
                             >
-                                Facebook
+                                <Facebook size={18} />
+
+                                <span>Facebook</span>
                             </a>
                         )}
 
@@ -66,9 +120,11 @@ export default function Footer() {
                                 href={setting.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-slate-600 hover:text-emerald-600"
+                                className="flex items-center gap-3 text-slate-600 transition hover:text-emerald-600"
                             >
-                                Instagram
+                                <Instagram size={18} />
+
+                                <span>Instagram</span>
                             </a>
                         )}
 
@@ -77,11 +133,22 @@ export default function Footer() {
                                 href={setting.youtube}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-slate-600 hover:text-emerald-600"
+                                className="flex items-center gap-3 text-slate-600 transition hover:text-emerald-600"
                             >
-                                YouTube
+                                <Youtube size={18} />
+
+                                <span>YouTube</span>
                             </a>
                         )}
+
+                        {!setting?.facebook &&
+                            !setting?.instagram &&
+                            !setting?.youtube && (
+                                <p className="text-sm text-slate-500">
+                                    Belum ada media sosial yang
+                                    ditambahkan.
+                                </p>
+                            )}
 
                     </div>
                 </div>
@@ -89,14 +156,15 @@ export default function Footer() {
 
             <div className="border-t border-slate-200">
                 <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-sm text-slate-500 md:flex-row">
-                    <p>
-                        © {new Date().getFullYear()} {villageName}. All rights
-                        reserved.
-                    </p>
 
                     <p>
-                        Dibangun menggunakan Laravel 12, React & Inertia.js
+                        © {new Date().getFullYear()} {villageName}. Seluruh hak cipta dilindungi.
                     </p>
+
+                    <p className="text-center md:text-right">
+                        Website resmi sebagai media informasi dan pelayanan masyarakat.
+                    </p>
+
                 </div>
             </div>
         </footer>

@@ -3,6 +3,7 @@ import {
     LayoutDashboard,
     Newspaper,
     Image,
+    Users,
     FileText,
     Settings,
     LogOut,
@@ -23,6 +24,11 @@ const menus = [
         title: "Galeri",
         href: "/gallery",
         icon: Image,
+    },
+    {
+        title: "Perangkat Dusun",
+        href: "/village-officials",
+        icon: Users,
     },
     {
         title: "Dokumen",
