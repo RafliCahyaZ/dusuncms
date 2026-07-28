@@ -1,6 +1,39 @@
-import { statistics } from "@/data/statistics";
+import { Users, Home, Map, MapPinned } from "lucide-react";
+import { usePage } from "@inertiajs/react";
 
 export default function HighlightStats() {
+    const { setting } = usePage().props;
+
+    const statistics = [
+        {
+            title: "Penduduk",
+            value: setting.population
+                ? `${Number(setting.population).toLocaleString("id-ID")} Jiwa`
+                : "-",
+            icon: Users,
+        },
+        {
+            title: "KK",
+            value: setting.family_cards
+                ? Number(setting.family_cards).toLocaleString("id-ID")
+                : "-",
+            icon: Home,
+        },
+        {
+            title: "Luas Wilayah",
+            value: setting.area_size || "-",
+            icon: Map,
+        },
+        {
+            title: "RT / RW",
+            value:
+                setting.rt_count || setting.rw_count
+                    ? `${setting.rt_count ?? "-"} / ${setting.rw_count ?? "-"}`
+                    : "-",
+            icon: MapPinned,
+        },
+    ];
+
     return (
         <section className="bg-white py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">

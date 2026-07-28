@@ -33,7 +33,6 @@ export default function NewsCard({ news }) {
             <div className="p-6">
                 <div className="flex items-center gap-2 text-sm text-slate-500">
                     <CalendarDays size={16} />
-
                     {publishedDate}
                 </div>
 
@@ -46,11 +45,10 @@ export default function NewsCard({ news }) {
                 </p>
 
                 <Link
-                    href="#"
+                    href={`/berita/${news.slug}`}
                     className="mt-6 inline-flex items-center gap-2 font-semibold text-emerald-600 transition hover:gap-3"
                 >
                     Baca Selengkapnya
-
                     <ArrowRight size={18} />
                 </Link>
             </div>

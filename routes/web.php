@@ -4,10 +4,50 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\PublicGalleryController;
+use App\Http\Controllers\PublicNewsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PublicController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| Public Website
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', [PublicController::class, 'index'])
+    ->name('home');
+
+/*
+|--------------------------------------------------------------------------
+| Public News
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/berita', [PublicNewsController::class, 'index'])
+    ->name('public.news.index');
+
+Route::get('/berita/{slug}', [PublicNewsController::class, 'show'])
+    ->name('public.news.show');
+
+/*
+|--------------------------------------------------------------------------
+| Public Gallery
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/galeri', [PublicGalleryController::class, 'index'])
+    ->name('public.gallery.index');
+
+Route::get('/galeri/{gallery}', [PublicGalleryController::class, 'show'])
+    ->name('public.gallery.show');
+
+/*
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+*/
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -22,6 +62,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Website Settings
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get(
+        '/website-settings',
+        [WebsiteSettingController::class, 'edit']
+    )->name('website-settings.edit');
+
+    Route::put(
+        '/website-settings',
+        [WebsiteSettingController::class, 'update']
+    )->name('website-settings.update');
+
+    /*
+    |--------------------------------------------------------------------------
     | News
     |--------------------------------------------------------------------------
     */
@@ -30,7 +86,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Gallery Album
+    | Gallery
     |--------------------------------------------------------------------------
     */
 

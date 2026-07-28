@@ -3,7 +3,6 @@ import PublicLayout from "@/Layouts/PublicLayout";
 import Navbar from "@/Components/Public/Navbar";
 import Hero from "@/Components/Public/Hero";
 import Footer from "@/Components/Public/Footer";
-import HighlightStats from "@/Components/Public/HighlightStats";
 import AboutSection from "@/Components/Public/AboutSection";
 import ServicesSection from "@/Components/Public/ServicesSection";
 import NewsSection from "@/Components/Public/NewsSection";
@@ -20,8 +19,6 @@ export default function Home({
 
             <main>
                 <Hero />
-
-                <HighlightStats />
 
                 <AboutSection />
 

@@ -30,8 +30,8 @@ const menus = [
         icon: FileText,
     },
     {
-        title: "Pengaturan",
-        href: "#",
+        title: "Website Settings",
+        href: "/website-settings",
         icon: Settings,
     },
 ];
@@ -70,7 +70,6 @@ export default function Sidebar() {
                             }`}
                         >
                             <Icon size={18} />
-
                             {menu.title}
                         </Link>
                     );
@@ -85,7 +84,6 @@ export default function Sidebar() {
                     className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-white"
                 >
                     <LogOut size={18} />
-
                     Logout
                 </Link>
             </div>
